@@ -35,7 +35,7 @@ pipeline {
                     cp target/*.war target/bookmyplan-practice-2-${BUILD_NUMBER}.war
                 '''
                 archiveArtifacts artifacts: 'target/bookmyplan-practice-2*.war', fingerprint: true
-                echo 'Artifact Created Successfully!!'
+                echo 'Artifact Created Successfully!!!!!'
             }
         }
     }
