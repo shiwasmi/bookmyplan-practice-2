@@ -105,8 +105,8 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: 'harbor-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     sh '''
                     echo "$PASSWORD" | docker login 43.204.25.99:8082 -u "$USERNAME" --password-stdin
-                    docker tag bookmyplan-practice:latest 43.204.25.99:8082/bookmyplan-practice/bookmyplan-practice:latest
-                    docker push 43.204.25.99:8082/bookmyplan-practice/bookmyplan-practice:latest
+                    docker tag bookmyplan-practice:latest 43.204.25.99:8082/bookmyplan-practice:latest
+                    docker push 43.204.25.99:8082/bookmyplan-practice:latest
                     docker logout 43.204.25.99:8082
                     '''
                     }
