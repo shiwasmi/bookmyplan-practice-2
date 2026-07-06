@@ -31,10 +31,10 @@ pipeline {
                 echo 'Creating Artifact...'
                 sh 'mvn package'
                 sh '''
-                    # If WAR is expected
-                    cp target/*.war target/bookmyplan-practice-2-${BUILD_NUMBER}.war
+                    # If jar is expected
+                    cp target/*.jar target/bookmyplan-practice-2-${BUILD_NUMBER}.jar
                 '''
-                archiveArtifacts artifacts: 'target/bookmyplan-practice-2-*.war', fingerprint: true
+                archiveArtifacts artifacts: 'target/bookmyplan-practice-2-*.jar', fingerprint: true
                 echo 'Artifact Created Successfully!!'
             }
         }
