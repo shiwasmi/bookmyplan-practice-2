@@ -99,6 +99,21 @@ pipeline {
             }
         }
 
+        stage('Upload Docker Image to Harbor') {
+            steps {
+                script {
+                    withCredentials([usernamePassword(credentialsId: 'harbor-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    sh '''
+                    echo "$PASSWORD" | docker login 43.204.25.99:8082 -u "$USERNAME" --password-stdin
+                    docker tag bookmyplan-practice:latest 43.204.25.99:8082/bookmyplan-practice/bookmyplan-practice:latest
+                    docker push 43.204.25.99:8082/bookmyplan-practice/bookmyplan-practice:latest
+                    docker logout 43.204.25.99:8082
+                    '''
+                    }
+                }
+            }
+        }
+
         stage('Clean Up Local Docker Images') {
             steps {
                 echo 'Cleaning Up Local Docker Images...'
@@ -106,6 +121,7 @@ pipeline {
                 docker rmi sagardocker/bookmyplan-practice:latest || echo "Image not found or already deleted"
                 docker rmi bookmyplan-practice:latest || echo "Image not found or already deleted"
                 docker rmi 251335054837.dkr.ecr.ap-south-1.amazonaws.com/sagardocker:bookmyplan-practice-latest || echo "Image not found or already deleted"
+                docker rmi 43.204.25.99:8082/bookmyplan-practice/bookmyplan-practice:latest || echo "Image not found or already deleted"
                 docker image prune -f
                 '''
                 echo 'Local Docker Images Cleaned Up Successfully!!'

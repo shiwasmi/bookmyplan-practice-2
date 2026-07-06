@@ -1,0 +1,42 @@
+# Basic settings
+hostname: 43.204.25.99
+http:
+  port: 8082
+harbor_admin_password: Harbor12345
+data_volume: /data
+
+# Job service settings
+jobservice:
+  max_job_workers: 2
+  job_loggers:
+    - stdout
+  logger_sweeper_duration: 1
+  webhook_job_max_retry: 10
+  webhook_job_http_client_timeout: 3
+
+# Notification settings
+notification:
+  webhook_job_max_retry: 10
+  webhook_job_http_client_timeout: 3
+
+# Database settings (required)
+database:
+  password: root123
+  max_idle_conns: 50
+  max_open_conns: 100
+
+# Storage settings (required)
+storage_service:
+  ca_bundle: ""
+
+# Chart service (required)
+chart:
+  absolute_url: disabled
+
+# Log settings (required)
+log:
+  level: info
+  local:
+    rotate_count: 50
+    rotate_size: 200M
+    location: /var/log/harbor
