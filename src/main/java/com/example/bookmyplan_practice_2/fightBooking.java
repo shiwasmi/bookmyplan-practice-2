@@ -7,4 +7,7 @@ public class fightBooking {
     public String getName() {
         return "Book your fight as soon as possible.";
     }
+    public String getName1() {
+        return "Book your fight as soon as possible.";
+    }
 }
