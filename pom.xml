@@ -11,7 +11,7 @@
 	<groupId>com.example</groupId>
 	<artifactId>bookmyplan-practice-2</artifactId>
     <packaging>war</packaging>
-    <version>v0.0.1</version>
+    <version>v1.0.${env.BUILD_NUMBER}</version>
 	<name/>
 	<description/>
 	<url/>
